@@ -40,7 +40,7 @@ namespace LocCongonhas.Controllers
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         public void ExecuteNonQuery(SqlParameter[] _sqlParameter, string _comando, string _nomeDataBase)
         {
-            this.stringConexao = Crypt_DeCrypt.Crypt_DeCrypt.Decrypt(ConfigurationManager.ConnectionStrings[_nomeDataBase].ConnectionString);
+            this.stringConexao = ConfigurationManager.ConnectionStrings[_nomeDataBase].ConnectionString;
             try
             {
                 using (SqlConnection cone = new SqlConnection(stringConexao))
@@ -101,7 +101,7 @@ namespace LocCongonhas.Controllers
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         public DataTable ExecuteDataTable(SqlParameter[] _sqlParameter, string _comando, string _nomeDataBase)
         {
-            this.stringConexao = Crypt_DeCrypt.Crypt_DeCrypt.Decrypt(ConfigurationManager.ConnectionStrings[_nomeDataBase].ConnectionString);
+            this.stringConexao = ConfigurationManager.ConnectionStrings[_nomeDataBase].ConnectionString;
             DataTable dtResultado = new DataTable();
             try
             {
